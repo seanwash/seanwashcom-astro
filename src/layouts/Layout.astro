@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import ProfilePicture from '../assets/images/profile-pic.png';
+import IconCode from '../components/icons/Code.astro';
+
+const { frontmatter } = Astro.props;
+
+const viewSourceUrl = 'https://github.com/seanwash/seanwashcom';
+
+const menuItems = [
+	{
+		name: 'Uses',
+		url: '/uses',
+	},
+	{
+		name: 'Bookmarks',
+		url: '/bookmarks',
+	},
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+		<title>{frontmatter.title}</title>
+
+		<meta property="og:image" content="/og-image.png">
+
+		<meta name="generator" content={Astro.generator} />
+		{frontmatter.description && (
+			<meta name="description" content={frontmatter.description}>
+			<meta property="og:description" content={frontmatter.description}>
+		)}
+	</head>
+	<body
+		class="dark:bg-neutral-800 prose dark:prose-invert min-h-screen min-w-full flex flex-col justify-between"
+	>
+		<div>
+			<nav class="p-8 flex items-center space-x-4">
+				<a href="/">
+					<Image
+						src={ProfilePicture}
+						class="w-12 h-12 m-0 inline-block"
+						alt="Avatar of Sean Washington"
+					/>
+				</a>
+
+				{
+					menuItems.map((item) => (
+						<a
+							class:list={[
+								'no-underline text-neutral-500 dark:text-neutral-400',
+								{
+									'font-bold text-neutral-900 dark:text-neutral-100': false,
+								},
+							]}
+							href={item.url}
+						>
+							{item.name}
+						</a>
+					))
+				}
+			</nav>
+
+			<main class="p-8 pt-0 max-w-3xl">
+				<slot />
+			</main>
+		</div>
+
+		<footer class="p-8 text-xs flex items-center space-x-2">
+			<span>&copy; Sean Washington.</span>
+
+			<a href={viewSourceUrl}>
+				<IconCode />
+				<span class="sr-only">View Source</span>
+			</a>
+		</footer>
+	</body>
+</html>
