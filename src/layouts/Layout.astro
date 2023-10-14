@@ -6,6 +6,8 @@ import IconCode from '../components/icons/Code.astro';
 const { frontmatter } = Astro.props;
 
 const viewSourceUrl = 'https://github.com/seanwash/seanwashcom';
+const TRACKER_SRC = import.meta.env.TRACKER_SRC;
+const TRACKER_ID = import.meta.env.TRACKER_ID;
 
 const menuItems = [
 	{
@@ -28,13 +30,23 @@ const menuItems = [
 
 		<title>{frontmatter.title}</title>
 
-		<meta property="og:image" content="/og-image.png">
+		<meta property="og:image" content="/og-image.png" />
 
 		<meta name="generator" content={Astro.generator} />
-		{frontmatter.description && (
-			<meta name="description" content={frontmatter.description}>
-			<meta property="og:description" content={frontmatter.description}>
-		)}
+		{
+			frontmatter.description && (
+				<>
+					<meta
+						name="description"
+						content={frontmatter.description}
+					/>
+					<meta
+						property="og:description"
+						content={frontmatter.description}
+					/>
+				</>
+			)
+		}
 	</head>
 	<body
 		class="dark:bg-neutral-800 prose dark:prose-invert min-h-screen min-w-full flex flex-col justify-between"
@@ -79,5 +91,7 @@ const menuItems = [
 				<span class="sr-only">View Source</span>
 			</a>
 		</footer>
+
+		<script async src={TRACKER_SRC} data-website-id={TRACKER_ID}></script>
 	</body>
 </html>
