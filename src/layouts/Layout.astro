@@ -3,11 +3,12 @@ import { Image } from 'astro:assets';
 import ProfilePicture from '../assets/images/profile-pic.png';
 import IconCode from '../components/icons/Code.astro';
 
-const { frontmatter } = Astro.props;
+const { frontmatter, url } = Astro.props;
 
 const viewSourceUrl = 'https://github.com/seanwash/seanwashcom-astro';
 const ANALYTICS_SRC = import.meta.env.ANALYTICS_SRC;
 const ANALYTICS_ID = import.meta.env.ANALYTICS_ID;
+const isOnHomePage = url === '';
 
 const menuItems = [
 	{
@@ -28,7 +29,13 @@ const menuItems = [
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 
-		<title>{frontmatter.title}</title>
+		{
+			isOnHomePage ? (
+				<title>{frontmatter.title}</title>
+			) : (
+				<title>{frontmatter.title} - Sean Washington</title>
+			)
+		}
 
 		<meta property="og:image" content="/og-image.png" />
 
