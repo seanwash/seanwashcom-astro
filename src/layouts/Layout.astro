@@ -6,8 +6,8 @@ import IconCode from '../components/icons/Code.astro';
 const { frontmatter } = Astro.props;
 
 const viewSourceUrl = 'https://github.com/seanwash/seanwashcom-astro';
-const TRACKER_SRC = import.meta.env.TRACKER_SRC;
-const TRACKER_ID = import.meta.env.TRACKER_ID;
+const ANALYTICS_SRC = import.meta.env.ANALYTICS_SRC;
+const ANALYTICS_ID = import.meta.env.ANALYTICS_ID;
 
 const menuItems = [
 	{
@@ -26,7 +26,7 @@ const menuItems = [
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 
 		<title>{frontmatter.title}</title>
 
@@ -92,6 +92,14 @@ const menuItems = [
 			</a>
 		</footer>
 
-		<script async src={TRACKER_SRC} data-website-id={TRACKER_ID}></script>
+		{
+			ANALYTICS_SRC && (
+				<script
+					async
+					src={ANALYTICS_SRC}
+					data-website-id={ANALYTICS_ID}
+				/>
+			)
+		}
 	</body>
 </html>
