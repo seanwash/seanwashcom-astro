@@ -6,7 +6,6 @@ import IconCode from "../components/icons/Code.astro";
 const { frontmatter, url } = Astro.props;
 const { title, description } = frontmatter || Astro.props;
 
-const ANALYTICS_SRC = import.meta.env.ANALYTICS_SRC;
 const ANALYTICS_ID = import.meta.env.ANALYTICS_ID;
 
 const isOnHomePage = url === "";
@@ -95,12 +94,22 @@ const menuItems = [
 		</footer>
 
 		{
-			ANALYTICS_SRC && (
+			ANALYTICS_ID && (
 				<script
+					is:inline
 					async
-					src={ANALYTICS_SRC}
-					data-website-id={ANALYTICS_ID}
-				/>
+					src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS_ID}`}
+				></script>
+
+				<script is:inline define:vars={{ ANALYTICS_ID: ANALYTICS_ID }}>
+					window.dataLayer = window.dataLayer || [];
+					function gtag() {
+						dataLayer.push(arguments);
+					}
+					gtag("js", new Date());
+
+					gtag("config", ANALYTICS_ID);
+				</script>
 			)
 		}
 	</body>
