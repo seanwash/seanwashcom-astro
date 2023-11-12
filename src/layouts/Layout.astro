@@ -1,23 +1,30 @@
 ---
-import { Image } from 'astro:assets';
-import ProfilePicture from '../assets/images/profile-pic.png';
-import IconCode from '../components/icons/Code.astro';
+import { Image } from "astro:assets";
+import ProfilePicture from "../assets/images/profile-pic.png";
+import IconCode from "../components/icons/Code.astro";
 
 const { frontmatter, url } = Astro.props;
+const { title, description } = frontmatter || Astro.props;
 
-const viewSourceUrl = 'https://github.com/seanwash/seanwashcom-astro';
 const ANALYTICS_SRC = import.meta.env.ANALYTICS_SRC;
 const ANALYTICS_ID = import.meta.env.ANALYTICS_ID;
-const isOnHomePage = url === '';
+
+const isOnHomePage = url === "";
+const formattedTitle = isOnHomePage ? title : `${title} | Sean Washington`;
+const viewSourceUrl = "https://github.com/seanwash/seanwashcom-astro";
 
 const menuItems = [
 	{
-		name: 'Uses',
-		url: '/uses',
+		name: "Blog",
+		url: "/posts",
 	},
 	{
-		name: 'Bookmarks',
-		url: '/bookmarks',
+		name: "Bookmarks",
+		url: "/bookmarks",
+	},
+	{
+		name: "Uses",
+		url: "/uses",
 	},
 ];
 ---
@@ -27,30 +34,18 @@ const menuItems = [
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 
-		{
-			isOnHomePage ? (
-				<title>{frontmatter.title}</title>
-			) : (
-				<title>{frontmatter.title} - Sean Washington</title>
-			)
-		}
+		<title>{formattedTitle}</title>
 
 		<meta property="og:image" content="/og-image.png" />
 
-		<meta name="generator" content={Astro.generator} />
 		{
-			frontmatter.description && (
+			description && (
 				<>
-					<meta
-						name="description"
-						content={frontmatter.description}
-					/>
-					<meta
-						property="og:description"
-						content={frontmatter.description}
-					/>
+					<meta name="description" content={description} />
+					<meta property="og:description" content={description} />
 				</>
 			)
 		}
@@ -72,9 +67,9 @@ const menuItems = [
 					menuItems.map((item) => (
 						<a
 							class:list={[
-								'no-underline text-neutral-500 dark:text-neutral-400',
+								"no-underline text-neutral-500 dark:text-neutral-400",
 								{
-									'font-bold text-neutral-900 dark:text-neutral-100': false,
+									"font-bold text-neutral-900 dark:text-neutral-100": false,
 								},
 							]}
 							href={item.url}

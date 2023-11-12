@@ -1,0 +1,50 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const title = "Blog";
+const description = "My thoughts on tech and stuff.";
+const posts = await getCollection("posts");
+
+function route(slug: string) {
+	return `/posts/${slug}`;
+}
+
+function formattedDate(date: Date) {
+	return new Date(date).toLocaleDateString("en-US", {
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	});
+}
+---
+
+<Layout title={title} description={description}>
+	<h1>{title}</h1>
+
+	<div class="space-y-16">
+		{
+			posts.map((post) => (
+				<article>
+					<div>
+						<h2 class="mb-0 text-2xl font-semibold tracking-tight ">
+							<a class="no-underline" href={route(post.slug)}>
+								{post.data.title}
+							</a>
+						</h2>
+
+						<time
+							class="text-sm"
+							datetime={post.data.publishedAt.toISOString()}
+						>
+							{formattedDate(post.data.publishedAt)}
+						</time>
+
+						<p>{post.data.description}</p>
+						<a href={route(post.slug)}>Read more &rarr;</a>
+					</div>
+				</article>
+			))
+		}
+	</div>
+</Layout>
