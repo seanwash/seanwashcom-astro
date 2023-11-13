@@ -5,6 +5,9 @@ import Layout from "../../layouts/Layout.astro";
 const title = "Blog";
 const description = "My thoughts on tech and stuff.";
 const posts = await getCollection("posts");
+const sortedPosts = posts.sort(
+	(a, b) => b.data.publishedAt - a.data.publishedAt,
+);
 
 function route(slug: string) {
 	return `/posts/${slug}`;
@@ -24,7 +27,7 @@ function formattedDate(date: Date) {
 
 	<div class="space-y-16">
 		{
-			posts.map((post) => (
+			sortedPosts.map((post) => (
 				<article>
 					<div>
 						<h2 class="mb-0 text-2xl font-semibold tracking-tight ">
