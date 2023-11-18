@@ -1,7 +1,7 @@
 ---
-layout: '../layouts/Layout.astro'
-title: 'Bookmarks'
-description: 'A list of articles, videos, and sites that have resonated with me.'
+layout: "../layouts/Layout.astro"
+title: "Bookmarks"
+description: "A list of articles, videos, and sites that have resonated with me."
 ---
 
 # Bookmarks
@@ -16,6 +16,9 @@ A list of articles, videos, and sites that have resonated with me.
 
 -   **[Software Engineering Anxiety](https://www.youtube.com/watch?v=-Afvtij-o2w)** (Video)  
      A short overview of two potential sources of anxiety that software engineers face and tips for dealing with them.
+
+-   **[Read the docs like a book](https://aaronfrancis.com/2023/read-the-docs-like-a-book)** (Article + Video)  
+    Want to get ahead? RTFM.
 
 -   **[Your Approach to Programming Is Wrong](https://www.youtube.com/watch?v=UAZflJ02JJo)** (Video)  
      As the producer writes, this is advice I wish I would have drilled into my head sooner.
