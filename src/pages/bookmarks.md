@@ -28,3 +28,6 @@ A list of articles, videos, and sites that have resonated with me.
 
 -   **[Most tech content is bullshit](https://www.aleksandra.codes/tech-content-consumer)** (Article)  
      "Don’t consume. Create. Ask questions. Stay curious."
+
+-   **[Stop Taking Programming Notes](https://www.youtube.com/watch?v=tG_ufZb7Cew)** (Video)  
+     "Default to code, leverage applied learning, get those hands dirty."
