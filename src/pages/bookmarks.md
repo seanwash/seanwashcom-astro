@@ -31,3 +31,6 @@ A list of articles, videos, and sites that have resonated with me.
 
 -   **[Stop Taking Programming Notes](https://www.youtube.com/watch?v=tG_ufZb7Cew)** (Video)  
      "Default to code, leverage applied learning, get those hands dirty."
+
+-   **[The unreasonable effectiveness of just showing up everyday](https://typesense.org/blog/the-unreasonable-effectiveness-of-just-showing-up-everyday/)** (Article)  
+     "I shall write some code everyday before or after work. That’s it. No deadlines, no quarterly goals, no milestones."
