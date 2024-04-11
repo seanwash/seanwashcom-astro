@@ -1,7 +1,7 @@
 ---
-layout: '../layouts/Layout.astro'
-title: 'Sean Washington'
-description: 'Software developer based in Santa Cruz, CA'
+layout: "../layouts/Layout.astro"
+title: "Sean Washington"
+description: "Software developer based in Santa Cruz, CA"
 ---
 
 # Sean Washington
@@ -10,4 +10,4 @@ Welcome! I'm a software developer based out of 🏝 [Santa Cruz, CA](https://www
 
 Before my journey with SideDoor, I co-hosted the [Does Not Compute](https://spec.fm/podcasts/does-not-compute) podcast, built [Design Kollective](https://designkollective.com), led projects as an Engineering Lead at [MetaLab](https://metalab.com), and was the lead developer at [Octopus Creative](https://octopuscreative.com).
 
-You can find me on [Twitter](https://twitter.com/seanwashbot) and [GitHub](https://github.com/seanwash).
+You can find me on [Twitter](https://twitter.com/seanwashbot), [Last.fm](https://www.last.fm/user/seanwashbot), and [GitHub](https://github.com/seanwash).
